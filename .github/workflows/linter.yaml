@@ -22,7 +22,7 @@ jobs:
       - name: python
         uses: actions/setup-python@v1
         with:
-          python-version: 3.9.16
+          python-version: 3.9.18
 
       - name: build
         run: pip install poetry; poetry install
