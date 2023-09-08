@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "estatex-db-service"
-version = "0.1.0"
+name = "db-service"
+version = "2.0.0"
 description = "Service to connect and perform operations on database"
 authors = ["anastasia"]
 readme = "README.md"

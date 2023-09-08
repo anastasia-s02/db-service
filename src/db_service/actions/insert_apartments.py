@@ -1,3 +1,8 @@
+"""
+Insert apartments action interface
+"""
+
+
 from dataclasses import dataclass
 
 from sqlalchemy import insert, select

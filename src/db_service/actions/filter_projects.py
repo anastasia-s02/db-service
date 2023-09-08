@@ -1,3 +1,8 @@
+"""
+FIler projects action interface
+"""
+
+
 from dataclasses import dataclass
 
 import sqlalchemy

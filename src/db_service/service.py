@@ -1,3 +1,8 @@
+"""
+Connects to RabbitMQ and processes messages
+"""
+
+
 import dataclasses
 import logging
 import sys

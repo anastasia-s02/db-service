@@ -1,3 +1,8 @@
+"""
+FIlter developers action interface
+"""
+
+
 from dataclasses import dataclass
 
 import sqlalchemy

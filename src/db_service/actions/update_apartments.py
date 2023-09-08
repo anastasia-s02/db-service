@@ -1,3 +1,8 @@
+"""
+Update apartments action interface
+"""
+
+
 from dataclasses import dataclass
 from typing import Any
 

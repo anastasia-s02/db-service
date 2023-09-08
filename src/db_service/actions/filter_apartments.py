@@ -1,3 +1,8 @@
+"""
+Filter apartments action interface
+"""
+
+
 from dataclasses import dataclass
 
 import sqlalchemy

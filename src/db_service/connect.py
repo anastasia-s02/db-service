@@ -1,3 +1,8 @@
+"""
+Connects to database
+"""
+
+
 from sqlalchemy import MetaData, create_engine
 from sqlalchemy.engine import Engine
 

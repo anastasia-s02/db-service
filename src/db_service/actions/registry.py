@@ -1,3 +1,8 @@
+"""
+Action registry
+"""
+
+
 import enum
 from dataclasses import dataclass
 from typing import Callable, Type

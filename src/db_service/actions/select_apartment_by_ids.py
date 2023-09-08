@@ -1,3 +1,8 @@
+"""
+Select apartments by IDs action interface
+"""
+
+
 from dataclasses import dataclass
 
 from dacite import from_dict
