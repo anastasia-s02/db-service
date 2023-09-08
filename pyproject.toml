@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "db-service"
-version = "1.0.0"
+version = "2.0.0"
 description = "Service to connect and perform operations on database"
 authors = ["anastasia"]
 readme = "README.md"
@@ -10,7 +10,7 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.9.11"
 rmq-interface = "^1.1"
 msgpack = "^1.0.4"
 logging = "^0.4.9.6"
@@ -23,6 +23,27 @@ sqlalchemy = "^1.4.46"
 psycopg2-binary = "^2.9.5"
 poetry-githooks = "^2.0.0"
 dacite = "^1.8.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+target-version = ['py39']
+line-length = 110
+exclude = '''
+/(
+    \.git
+  | __pycache__
+  | \.tox
+  | \.venv
+  | build
+  | dist
+  | docs
+  | notes
+)/
+'''
 
 [tool.githooks]
 pre-commit = "poetry run black src/; poetry run isort src/"

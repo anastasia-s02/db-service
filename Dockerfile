@@ -1,4 +1,4 @@
-FROM python-base:latest
+FROM python3.9.11-base:latest
 
 COPY . /root
 

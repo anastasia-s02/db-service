@@ -7,8 +7,8 @@ The contents of the repo do not include any confidential information, and all da
 ## Installation
 
 ```
-pyenv install 3.9.16
-pyenv global 3.9.16
+pyenv install 3.9.11
+pyenv global 3.9.11
 poetry env use python
 poetry install
 poetry run githooks setup
