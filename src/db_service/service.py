@@ -1,10 +1,5 @@
-"""
-Conncts to RabbitMQ and processes messages
-"""
-
 import dataclasses
 import logging
-import os
 import sys
 
 import msgpack
@@ -14,6 +9,7 @@ from dacite import from_dict
 
 from db_service.actions.registry import ACTION_REGISTRY, ActionType
 from db_service.connect import ENGINE
+from db_service.environment import ENVIRONMENT
 
 logging.basicConfig(stream=sys.stdout)
 logger = logging.getLogger(__name__)
@@ -21,8 +17,7 @@ logger = logging.getLogger(__name__)
 
 @rmq_interface.consumer_function
 def consume(
-    payload: bytes,
-    properties: pika.BasicProperties,  # pylint: disable=unused-argument # fmt: skip
+    payload: bytes, properties: pika.BasicProperties  # pylint: disable=unused-argument # fmt: skip
 ) -> bytes:
     """
     Process message from queue
@@ -42,9 +37,7 @@ def consume(
         function_result = action.function(request)
 
         logger.info("Done processing; sending back...")
-        result = msgpack.packb(
-            {"data": [dataclasses.asdict(function_result)], "errors": []}
-        )
+        result = msgpack.packb({"data": dataclasses.asdict(function_result), "errors": []})
     except Exception as exception:  # pylint: disable=broad-except
         logger.exception(f"Exception in processing message: {str(exception)}")
         result = msgpack.packb({"data": [], "errors": [str(exception)]})
@@ -52,5 +45,5 @@ def consume(
 
 
 if __name__ == "__main__":
-    interface = rmq_interface.RabbitMQInterface(url_parameters=os.getenv("RMQ_CONNECT"))
-    interface.listen(os.getenv("RMQ_TABLENAME"), consume)
+    interface = rmq_interface.RabbitMQInterface(url_parameters=ENVIRONMENT.rmq_connect)
+    interface.listen(ENVIRONMENT.rmq_queue, consume)
